@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact | GolubMedia</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+
+<body class="contact">
+  <header>
+    
+    <nav class="navbar">
+      <div class="logo">GolubMedia</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="contact-section" class="section-block reveal">
+      <div class="contact-wrap">
+        <h1>Let’s build the system.</h1>
+        <p class="contact-sub">Fastest way to reach me: Discord or Email. I answer almost instant, because money don't like to wait.</p>
+
+        <div class="contact-grid">
+          <!-- Discord card -->
+          <div class="contact-card">
+            <h2>Discord</h2>
+            <p class="muted">Tag: <span class="neon">golub 7744</span></p>
+            <div class="contact-actions">
+              <button class="btn copy-btn" data-copy="golub 7744">Copy tag</button>
+              <a class="btn outline" href="https://discord.com/app" target="_blank" rel="noopener">Open Discord</a>
+            </div>
+            <p class="micro">Note: Discord tags are not directly linkable without ID. Copy the tag and add me.</p>
+          </div>
+
+          <!-- Email card -->
+          <div class="contact-card">
+            <h2>Email</h2>
+            <p class="muted">golubmediazero@gmail.com</p>
+            <div class="contact-actions">
+              <a class="btn" href="mailto:golubmediazero@gmail.com?subject=GolubMedia%20Inquiry&body=Hej%20Golub,%0A%0A(ukratko%20opiši%20projekat%2Fpotrebe%20i%20rok)%0A%0ABudžet%3A%20%0ARok%3A%20%0ALinkovi%3A%20">Send email</a>
+              <button class="btn outline copy-btn" data-copy="golubmediazero@gmail.com">Copy email</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-faq">
+          <h3>What to include</h3>
+          <ul>
+            <li>What do you want to make and references (examples)</li>
+            <li>Budget and deadline</li>
+            <li>link with files and script</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-left">
+        <h3>GolubMedia</h3>
+        <p>Next-gen editing and automation systems for creators, agencies, and SaaS founders.</p>
+      </div>
+
+      <div class="footer-center">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-right">
+        <h4>Connect</h4>
+        <div class="social-links">
+          <a href="#" target="_blank">Discord</a>
+          <a href="mailto:golubmediazero@gmail.com">Email</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 GolubMedia. Built by maniacs who don’t sleep.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Copy-to-clipboard za Discord tag i email
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.copy-btn');
+      if (!btn) return;
+      const text = btn.dataset.copy || '';
+      navigator.clipboard.writeText(text).then(() => {
+        const original = btn.textContent;
+        btn.textContent = 'Copied ✓';
+        setTimeout(() => (btn.textContent = original), 1200);
+      });
+    });
+  </script>
+</body>
+</html>

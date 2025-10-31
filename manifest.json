@@ -1,0 +1,13 @@
+{
+  "name": "GolubMedia",
+  "short_name": "GolubMedia",
+  "description": "Editing and automation systems for creators and agencies.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#00ffff",
+  "icons": [
+    { "src": "assets/favicon.png", "sizes": "64x64", "type": "image/png" },
+    { "src": "assets/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}
