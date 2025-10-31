@@ -45,7 +45,23 @@
             <h2>Email</h2>
             <p class="muted">golubmediazero@gmail.com</p>
             <div class="contact-actions">
-              <a class="btn" href="mailto:golubmediazero@gmail.com?subject=GolubMedia%20Inquiry&body=Hej%20Golub,%0A%0A(ukratko%20opiši%20projekat%2Fpotrebe%20i%20rok)%0A%0ABudžet%3A%20%0ARok%3A%20%0ALinkovi%3A%20">Send email</a>
+              <a class="btn"
+   href="#"
+   onclick="
+     try {
+       window.open(
+         'https://mail.google.com/mail/?view=cm&fs=1&to=golubmediazero@gmail.com&su=Mission%20for%20Golub&body=Yo%20Golub,%0A%0AI%20have%20a%20mission%20for%20you.%20Humanity%20depends%20on%20this%20edit.%0A%0AProject%20idea:%20%0ADeadline%20(when%20the%20world%20ends):%20%0ABudget%20(aka%20how%20much%20coffee%20you%20can%20afford):%20%0ALinks%20(proof%20of%20chaos):%0A',
+         '_blank'
+       );
+     } catch(e) {
+       window.location.href='mailto:golubmediazero@gmail.com?subject=Mission%20for%20Golub&body=Yo%20Golub,%0A%0AI%20have%20a%20mission%20for%20you.%20Humanity%20depends%20on%20this%20edit.%0A%0AProject%20idea:%20%0ADeadline%20(when%20the%20world%20ends):%20%0ABudget%20(aka%20how%20much%20coffee%20you%20can%20afford):%20%0ALinks%20(proof%20of%20chaos):%0A';
+     }
+     return false;
+   ">
+  Send email
+</a>
+
+
               <button class="btn outline copy-btn" data-copy="golubmediazero@gmail.com">Copy email</button>
             </div>
           </div>

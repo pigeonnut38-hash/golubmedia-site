@@ -187,24 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
     img.addEventListener('load', () => img.setAttribute('data-loaded', '1'));
   });
 });
-// === AMBIENT SOUND TOGGLE ===
-document.addEventListener('DOMContentLoaded', () => {
-  const btn = document.getElementById('soundToggle');
-  const audio = document.getElementById('ambientSound');
-  if (!btn || !audio) return;
 
-  let playing = false;
-  btn.addEventListener('click', () => {
-    if (playing) {
-      audio.pause();
-      btn.textContent = '🔊';
-    } else {
-      audio.play();
-      btn.textContent = '🔇';
-    }
-    playing = !playing;
-  });
-});
 
 
 
