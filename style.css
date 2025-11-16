@@ -112,10 +112,13 @@ body::after {
 
 main {
   flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   padding-top: calc(var(--header-h) + 24px);
-  padding-bottom: 24px;   /* smanjili jastuk, footer ide niže */
+  padding-bottom: 0;  /* makni jastuk, da footer legne do dna */
 }
+
 
 
 /* sekcije i kartice iznad HUD pozadine */
@@ -330,7 +333,8 @@ body.contact {
 ========================================= */
 
 .hero {
-  min-height: calc(100vh - 140px); /* ~ visina footera + malo lufta */
+  flex: 1;              /* neka pojede sav prostor u main-u */
+  min-height: 0;        /* nema više na silu 100vh-varijanti */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -340,6 +344,7 @@ body.contact {
   position: relative;
   isolation: isolate;
 }
+
 
 /* neon frame + scanlines oko hero bloka */
 .hero::before {
@@ -1510,22 +1515,50 @@ body.error404 {
   }
 }
 
-/* =========================================
-   FOOTER
-========================================= */
+/* ===========================
+   AUDIT BUBBLE
+=========================== */
 
-/* =========================================
-   FOOTER (UNIFIED)
-========================================= */
+.audit-bubble {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 50;
+  padding: 12px 22px;
+  border-radius: 999px;
+  background: var(--primary-color);
+  color: #000;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid #003033;
+  box-shadow:
+    0 0 16px rgba(0, 255, 255, 0.9),
+    0 0 36px rgba(0, 255, 255, 0.5);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.audit-bubble:hover {
+  transform: translateY(-2px);
+  background: #0af;
+}
+
+
+/* ===========================
+   FOOTER
+=========================== */
 
 footer {
-  flex-shrink: 0;
   border-top: 1px solid rgba(0, 255, 255, 0.35);
   background: #010101ee;
   box-shadow: 0 -12px 26px rgba(0, 0, 0, 0.95);
   padding: 28px 24px 16px;
   color: #bbb;
-  width: 100%;
 }
 
 .footer-container {
@@ -1592,18 +1625,6 @@ footer {
 
   .footer-container {
     flex-direction: column;
-  }
-}
-
-
-@media (max-width: 600px) {
-  footer {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .footer-right {
-    margin-top: 12px;
   }
 }
 
