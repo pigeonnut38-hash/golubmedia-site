@@ -488,13 +488,29 @@ main {
   gap: 32px;
 }
 
-/* 4 kartice u redu na širim ekranima */
-.lf-grid,
-.sf-grid {
-  grid-template-columns: repeat(4, minmax(260px, 1fr));
-  max-width: 1400px;
+
+
+/* LONG-FORM – veće kartice, 4 u redu, centrirane */
+.grid-shell {
+  display: flex;
+  justify-content: center;      /* centrira ceo grid */
+}
+
+.lf-grid {
+  grid-template-columns: repeat(4, minmax(320px, 1fr));
+  max-width: 1700px;
   margin: 24px auto 0;
 }
+
+/* SHORT-FORM – malo manji, i dalje 4 u redu */
+.sf-grid {
+  grid-template-columns: repeat(4, minmax(220px, 1fr));
+  max-width: 1250px;
+  margin: 24px auto 0;
+}
+
+
+
 
 /* kartice */
 
@@ -622,11 +638,25 @@ main {
 
 .thumb-grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 14px;
-  max-width: 1120px;
-  margin: 24px auto 0;
+  grid-template-columns: repeat(5, minmax(260px, 1fr));
+  gap: 20px;
+  max-width: 1750px;          /* ogroman pojas da 5 komada budu krupni */
+  margin: 20px auto 0;
+    width: fit-content;   
 }
+
+/* centrira celu sekciju koja sadrži thumb-grid */
+.section-block:has(.thumb-grid) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section-block:has(.thumb-grid) .section-title {
+  text-align: center;
+  width: 100%;
+}
+
 
 .thumb-grid img {
   width: 100%;

@@ -444,13 +444,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // možeš dodati praćenje klikova ovde ako želiš
   });
 });
-// === GOLUBMEDIA OPS WIDGET (fixed metrics) ===
+// === GOLUBMEDIA OPS WIDGET (fixed metrics, global) ===
 document.addEventListener("DOMContentLoaded", () => {
-  const TARGET_QUEUE = 4;   // koliko videa hoćeš
-  const TARGET_LOAD  = 60;  // procenat loada
-  const TARGET_MODE  = "MEEEH";
+  const TARGET_QUEUE = 4;    // broj videa
+  const TARGET_LOAD  = 90;   // procenat loada
+  const TARGET_MODE  = "NORMAL";
 
-  // ako već postoji ručno ubačen widget, nemoj da praviš novi
+  // ako već postoji ručno ubačen widget, ne pravimo novi
   if (document.querySelector(".ops-widget")) return;
 
   const widget = document.createElement("div");
@@ -484,7 +484,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const loadEl  = widget.querySelector('[data-metric="load"]');
   const toggle  = widget.querySelector(".ops-toggle");
 
-  // toggle za minimizaciju
+  // minimizacija
   if (toggle) {
     toggle.addEventListener("click", () => {
       widget.classList.toggle("ops-collapsed");
@@ -492,7 +492,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // helper za animaciju 0 → target
   function animateValue(el, start, end, duration, formatFn) {
     const startTime = performance.now();
 
@@ -500,20 +499,15 @@ document.addEventListener("DOMContentLoaded", () => {
       const progress = Math.min((now - startTime) / duration, 1);
       const value = Math.round(start + (end - start) * progress);
       el.textContent = formatFn(value);
-
-      if (progress < 1) {
-        requestAnimationFrame(frame);
-      }
+      if (progress < 1) requestAnimationFrame(frame);
     }
 
     requestAnimationFrame(frame);
   }
 
-  // animacije – jednom na load
   if (queueEl) {
     animateValue(queueEl, 0, TARGET_QUEUE, 800, v => `${v} videos`);
   }
-
   if (loadEl) {
     animateValue(loadEl, 0, TARGET_LOAD, 800, v => `${v}%`);
   }

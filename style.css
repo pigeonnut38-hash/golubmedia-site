@@ -112,10 +112,14 @@ body::after {
 
 main {
   flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   padding-top: calc(var(--header-h) + 24px);
-  padding-bottom: 80px;
+  padding-bottom: 0;  /* makni jastuk, da footer legne do dna */
 }
+
+
 
 /* sekcije i kartice iznad HUD pozadine */
 section {
@@ -329,7 +333,8 @@ body.contact {
 ========================================= */
 
 .hero {
-  min-height: 100vh;
+  flex: 1;              /* neka pojede sav prostor u main-u */
+  min-height: 0;        /* nema više na silu 100vh-varijanti */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -339,6 +344,7 @@ body.contact {
   position: relative;
   isolation: isolate;
 }
+
 
 /* neon frame + scanlines oko hero bloka */
 .hero::before {
@@ -747,7 +753,7 @@ body.contact {
 
 .services-section {
   width: 100%;
-  padding: 120px 10%;
+  padding: 120px 10% 40px;  /* top 120, bokovi 10%, bottom 40 */
   color: #ddd;
   text-align: center;
   display: flex;
@@ -756,6 +762,7 @@ body.contact {
   background: transparent;
   position: relative;
 }
+
 
 .services-section h1 {
   color: var(--primary-color);
@@ -1260,6 +1267,105 @@ body.error404 {
   }
 }
 
+/* ===========================
+   OPS WIDGET – GOLUBMEDIA OPS
+=========================== */
+
+.ops-widget {
+  position: fixed;
+  left: 24px;
+  bottom: 26px;
+  z-index: 60;
+  width: 230px;
+  padding: 12px 16px;
+  border-radius: 18px;
+  border: 1px solid rgba(0,255,255,0.55);
+  background:
+    radial-gradient(circle at 0% 0%, rgba(0,255,255,0.18), transparent 60%),
+    rgba(2, 10, 12, 0.96);
+  box-shadow:
+    0 0 22px rgba(0,255,255,0.65),
+    0 14px 32px rgba(0,0,0,0.98);
+  font-family: "Fira Code","Consolas",monospace;
+  font-size: 0.8rem;
+  color: #cfffff;
+}
+
+.ops-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.ops-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ops-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #00ff88;
+  box-shadow: 0 0 12px #00ff88;
+}
+
+.ops-title {
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.7rem;
+  color: #aefcff;
+}
+
+.ops-toggle {
+  border: none;
+  background: transparent;
+  color: #aefcff;
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 0 4px;
+}
+
+.ops-body {
+  border-top: 1px solid rgba(0,255,255,0.35);
+  padding-top: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.ops-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ops-label {
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #7fffe0;
+}
+
+.ops-value {
+  font-weight: 600;
+}
+
+.ops-value span {
+  font-weight: 400;
+}
+
+.ops-widget.ops-collapsed .ops-body {
+  display: none;
+}
+
+@media (max-width: 820px) {
+  .ops-widget {
+    display: none;
+  }
+}
+
+
 /* =========================================
    SCROLL REVEAL
 ========================================= */
@@ -1409,22 +1515,50 @@ body.error404 {
   }
 }
 
-/* =========================================
-   FOOTER
-========================================= */
+/* ===========================
+   AUDIT BUBBLE
+=========================== */
 
-/* =========================================
-   FOOTER (UNIFIED)
-========================================= */
+.audit-bubble {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 50;
+  padding: 12px 22px;
+  border-radius: 999px;
+  background: var(--primary-color);
+  color: #000;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid #003033;
+  box-shadow:
+    0 0 16px rgba(0, 255, 255, 0.9),
+    0 0 36px rgba(0, 255, 255, 0.5);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.audit-bubble:hover {
+  transform: translateY(-2px);
+  background: #0af;
+}
+
+
+/* ===========================
+   FOOTER
+=========================== */
 
 footer {
-  flex-shrink: 0;
   border-top: 1px solid rgba(0, 255, 255, 0.35);
   background: #010101ee;
   box-shadow: 0 -12px 26px rgba(0, 0, 0, 0.95);
   padding: 28px 24px 16px;
   color: #bbb;
-  width: 100%;
 }
 
 .footer-container {
@@ -1491,18 +1625,6 @@ footer {
 
   .footer-container {
     flex-direction: column;
-  }
-}
-
-
-@media (max-width: 600px) {
-  footer {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .footer-right {
-    margin-top: 12px;
   }
 }
 
