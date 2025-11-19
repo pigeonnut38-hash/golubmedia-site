@@ -650,6 +650,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 .section-block:has(.thumb-grid) .section-title {
